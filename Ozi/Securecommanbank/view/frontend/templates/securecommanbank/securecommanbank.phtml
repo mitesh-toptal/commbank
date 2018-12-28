@@ -1,0 +1,45 @@
+<?php
+    /*
+    *  Commented for future use...TO Make 2-Party transactions.... 
+    */
+    /*
+?>
+<?php $_code=$this->getMethodCode() ?>
+<ul class="form-list" id="payment_form_<?php echo $_code ?>" style="display:none;">
+    <li>
+        <label for="<?php echo $_code ?>_vpc_card" class="required"><em>*</em><?php echo __('Credit Card Type') ?></label>
+        <div class="input-box">
+            <select id="<?php echo $_code ?>_vpc_card" name="payment[vpc_card]" title="<?php echo __('Credit Card Type') ?>" class="required-entry validate-vpc-card-select required-entry">
+                <option value=""><?php echo __('--Please Select--') ?></option>
+            <?php //$_vpcCard = $this->getInfoData('vpc_card') 
+            
+            ?>
+            <?php foreach ($this->getVpcAvailableTypes() as $k => $val): ?>
+                <option value="<?php echo $val['value']; ?>"><?php echo $val['label']; ?></option>
+            <?php endforeach ?>
+            </select>
+        </div>
+    </li>
+    <li>
+        <label for="<?php echo $_code ?>_vpc_card_num" class="required"><em>*</em><?php echo __('Credit Card Number') ?></label>
+        <div class="input-box">
+            <input type="text" id="<?php echo $_code ?>_vpc_card_num" name="payment[vpc_card_num]" title="<?php echo __('Credit Card Number') ?>" class="input-text validate-vpc-card-num required-entry" value="" />
+        </div>
+    </li>
+    <li>
+        <label for="<?php echo $_code ?>_expiration" class="required"><em>*</em><?php echo __('Card Expiry Date (YYMM)') ?></label>
+        <div class="input-box">
+            <input type="text" id="<?php echo $_code ?>_vpc_card_exp" name="payment[vpc_card_exp]" title="<?php echo __('Card Expiry Date (YYMM)') ?>" class="input-text validate-vpc-card-exp required-entry" value="" />
+        </div>
+    </li>
+    <li>
+        <label for="<?php echo $_code ?>_vpc_card_security_code" class="required"><em>*</em><?php echo __('Card Security Code (CVV2)') ?></label>
+        <div class="input-box">
+            <div class="v-fix">
+                <input type="text" title="<?php echo __('Card Security Code (CVV2)') ?>" class="input-text cvv required-entry validate-cc-cvn" id="<?php echo $_code ?>_vpc_card_security_code" name="payment[vpc_card_security_code]" value="" />
+            </div>
+        </div>
+    </li>
+</ul>
+
+<?php */ ?>

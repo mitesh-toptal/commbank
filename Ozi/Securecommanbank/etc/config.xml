@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+  <default>
+    <payment>
+      <securecommanbank>
+        <model>Ozi\Securecommanbank\Model\Standard</model>
+        <active>0</active>
+        <order_status>pending</order_status>
+        <title>Commanbank 3D Secure</title>
+        <vpc_Version>1</vpc_Version>
+        <vpc_Command>pay</vpc_Command>
+        <virtualPaymentClientURL>https://migs.mastercard.com.au/vpcpay</virtualPaymentClientURL>
+        <allowspecific>0</allowspecific>
+        <sort_order>1</sort_order>
+      </securecommanbank>
+    </payment>
+  </default>
+</config>

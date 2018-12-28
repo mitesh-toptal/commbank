@@ -1,0 +1,49 @@
+<?php
+$RedirectUrl=\Magento\Framework\App\ObjectManager::getInstance()->get('Ozi\Securecommanbank\Helper\Data')->getRedirectUrl();
+if($RedirectUrl){
+?>
+<form id="order-migs" name="vpcpaymentgateway_order" action="<?php echo $RedirectUrl; ?>" method="post">
+    <!-- input type="submit" name="submit" value="Continue"/ -->
+    <p>Please wait while your payment is being processed...</p>
+	<?php 
+   $post_data=\Magento\Framework\App\ObjectManager::getInstance()->get('Ozi\Securecommanbank\Model\PaymentconnectionFactory')->create()->getPostData();
+   $hashinput = "";
+   foreach($post_data as $key => $value) {
+    // create the hash input and URL leaving out any fields that have no value
+        if (strlen($value) > 0) {
+    ?>
+            <input type="hidden" name="<?php echo($key); ?>" value="<?php echo($value); ?>"/><br>
+    <?php             
+            if ((strlen($value) > 0) && ((substr($key, 0,4)=="vpc_") || (substr($key,0,5) =="user_"))) {
+                $hashinput .= $key . "=" . $value . "&";
+            }
+        }
+    }
+$hashinput = rtrim($hashinput, "&");
+$securesecret=\Magento\Framework\App\ObjectManager::getInstance()->get('Ozi\Securecommanbank\Helper\Data')->getSecureHash();
+?>        
+    <!-- attach SecureHash -->
+    <input type="hidden" name="vpc_SecureHash" value="<?php echo(strtoupper(hash_hmac('SHA256', $hashinput, pack('H*',$securesecret)))); ?>"/>
+    <input type="hidden" name="vpc_SecureHashType" value="SHA256">
+</td></tr>
+</table>
+</form>
+
+<!--
+<script type="text/javascript">
+require(["jquery", "prototype"], function(jQuery) {
+
+document.vpcpaymentgateway_order.submit();
+
+});
+</script>
+-->
+<script type="text/javascript">
+function send()
+{
+    var f = document.getElementById("order-migs");
+    f.submit();
+}
+send();
+</script>
+<?php  } ?>
